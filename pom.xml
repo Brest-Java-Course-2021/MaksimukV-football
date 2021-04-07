@@ -14,6 +14,8 @@
         <module>dao-api</module>
         <module>dao</module>
         <module>db</module>
+        <module>service-api</module>
+        <module>service</module>
     </modules>
 
     <properties>
@@ -64,6 +66,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${springbom.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${springbom.version}</version>
         </dependency>
 
