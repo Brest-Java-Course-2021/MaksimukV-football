@@ -62,7 +62,6 @@ public class Player {
         this.teamId = teamId;
     }
 
-    @Override
     public String toString() {
         return "Player{" +
                 "playerId=" + playerId +
