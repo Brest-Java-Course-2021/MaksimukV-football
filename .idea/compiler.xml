@@ -9,11 +9,13 @@
         <module name="dao-api" />
         <module name="model" />
         <module name="dao" />
+        <module name="db" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dao" target="15" />
       <module name="dao-api" target="15" />
+      <module name="db" target="15" />
       <module name="MaksimukV-football" target="15" />
       <module name="model" target="15" />
     </bytecodeTargetLevel>
