@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Team {
 
     private Integer teamId;
+
     private String teamName;
 
     public Team() {}

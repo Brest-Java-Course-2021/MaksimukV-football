@@ -6,22 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dao-api" />
-        <module name="model" />
         <module name="dao" />
-        <module name="db" />
         <module name="service" />
+        <module name="dao-api" />
+        <module name="service-impl" />
+        <module name="service-rest" />
+        <module name="rest-app" />
+        <module name="model" />
+        <module name="db" />
         <module name="service-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="dao" target="15" />
+      <module name="dao" target="11" />
       <module name="dao-api" target="15" />
       <module name="db" target="15" />
       <module name="MaksimukV-football" target="15" />
       <module name="model" target="15" />
-      <module name="service" target="15" />
+      <module name="rest-app" target="15" />
+      <module name="service" target="11" />
       <module name="service-api" target="15" />
+      <module name="service-impl" target="15" />
+      <module name="service-rest" target="15" />
+      <module name="web-app" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>
