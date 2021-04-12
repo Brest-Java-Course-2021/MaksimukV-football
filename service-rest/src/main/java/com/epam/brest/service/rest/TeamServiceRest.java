@@ -21,7 +21,7 @@ public class TeamServiceRest implements TeamService {
         this.url = url;
         this.restTemplate = restTemplate;
     }
-    
+
     public List<Team> findAll() {
         ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);
         return (List<Team>) responseEntity.getBody();

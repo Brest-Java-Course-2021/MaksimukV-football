@@ -9,11 +9,11 @@ public interface TeamDao {
 
     List<Team> findAll();
 
-    Optional<Team> findById(Integer departmentId);
+    Optional<Team> findById(Integer teamId);
 
-    Integer create(Team department);
+    Integer create(Team team);
 
-    Integer update(Team department);
+    Integer update(Team team);
 
     Integer delete(Integer teamId);
 

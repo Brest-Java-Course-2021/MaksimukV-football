@@ -15,6 +15,8 @@
         <module>dao</module>
         <module>db</module>
         <module>service-api</module>
+        <module>service-rest</module>
+        <module>rest-app</module>
         <module>service</module>
     </modules>
 
@@ -26,92 +28,77 @@
         <junit.version>5.7.1</junit.version>
         <springbom.version>5.3.5</springbom.version>
         <springboot.version>2.4.4</springboot.version>
+        <hamcrest.version>1.3</hamcrest.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-framework-bom</artifactId>
-            <version>${springbom.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <type>pom</type>
-            <version>${springboot.version}</version>
-            <scope>import</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.3.5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <type>pom</type>
+                <version>2.4.4</version>
+                <scope>import</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${springbom.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${springbom.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>dao-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${springbom.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springbom.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>service-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>service-rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.epam.brest</groupId>
+                <artifactId>db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.200</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
 </project>
-
-<!--<dependency>-->
-<!--<groupId>com.epam.brest</groupId>-->
-<!--<artifactId>model</artifactId>-->
-<!--<version>${project.version}</version>-->
-<!--</dependency>-->
-
-<!--<dependency>-->
-<!--<groupId>com.epam.brest</groupId>-->
-<!--<artifactId>dao-api</artifactId>-->
-<!--<version>${project.version}</version>-->
-<!--</dependency>-->
-
-<!--<dependency>-->
-<!--<groupId>com.epam.brest</groupId>-->
-<!--<artifactId>dao</artifactId>-->
-<!--<version>${project.version}</version>-->
-<!--</dependency>-->
-
-<!--<dependency>-->
-<!--<groupId>com.epam.brest</groupId>-->
-<!--<artifactId>db</artifactId>-->
-<!--<version>${project.version}</version>-->
-<!--</dependency>-->
