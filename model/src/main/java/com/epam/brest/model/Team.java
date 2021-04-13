@@ -30,7 +30,6 @@ public class Team {
         this.teamName = teamName;
     }
 
-    @Override
     public String toString() {
         return "Team{" +
                 "teamId=" + teamId +
@@ -38,7 +37,6 @@ public class Team {
                 '}';
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -46,7 +44,6 @@ public class Team {
         return Objects.equals(teamId, that.teamId) && Objects.equals(teamName, that.teamName);
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(teamId, teamName);
     }
