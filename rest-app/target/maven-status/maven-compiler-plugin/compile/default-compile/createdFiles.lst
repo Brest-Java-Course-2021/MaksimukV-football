@@ -1,2 +1,3 @@
 com/epam/brest/service/rest_app/ApplicationRest.class
 com/epam/brest/service/rest_app/TeamController.class
+com/epam/brest/service/rest_app/PlayerController.class

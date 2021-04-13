@@ -9,13 +9,13 @@ public interface PlayerDao {
 
     List<Player> findAll();
 
-    Optional<Player> findById(Integer departmentId);
+    Optional<Player> findById(Integer playerId);
 
-    Integer create(Player department);
+    Integer create(Player player);
 
-    Integer update(Player department);
+    Integer update(Player player);
 
-    Integer delete(Player teamId);
+    Integer delete(Integer playerId);
 
     Integer count();
 

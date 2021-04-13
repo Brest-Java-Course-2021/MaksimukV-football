@@ -14,34 +14,34 @@ import java.util.Optional;
 @Transactional
 public class TeamServiceImpl implements TeamService {
 
-    private final TeamDao TeamDao;
+    private final TeamDao teamDao;
 
     @Autowired
-    public TeamServiceImpl(TeamDao TeamDao) {
-        this.TeamDao = TeamDao;
+    public TeamServiceImpl(TeamDao teamDao) {
+        this.teamDao = teamDao;
     }
 
     public List<Team> findAll() {
-        return TeamDao.findAll();
+        return teamDao.findAll();
     }
 
     public Optional<Team> findById(Integer id) {
-        return TeamDao.findById(id);
+        return teamDao.findById(id);
     }
 
     public Integer create(Team Team) {
-        return TeamDao.create(Team);
+        return teamDao.create(Team);
     }
 
     public Integer update(Team Team) {
-        return TeamDao.update(Team);
+        return teamDao.update(Team);
     }
 
     public Integer delete(Integer TeamId) {
-        return TeamDao.delete(TeamId);
+        return teamDao.delete(TeamId);
     }
 
     public Integer count() {
-        return TeamDao.count();
+        return teamDao.count();
     }
 }
