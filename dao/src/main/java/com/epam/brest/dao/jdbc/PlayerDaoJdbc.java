@@ -5,6 +5,8 @@ import com.epam.brest.model.Player;
 
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -22,6 +24,8 @@ import java.util.Optional;
 
 @Repository
 public class PlayerDaoJdbc implements PlayerDao {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PlayerDaoJdbc.class);
 
     @Value("${player.select}")
     private String selectSql;
@@ -53,19 +57,19 @@ public class PlayerDaoJdbc implements PlayerDao {
     }
 
     public List<Player> findAll() {
+        LOGGER.debug("Find all players");
         return namedParameterJdbcTemplate.query(selectSql, rowMapper);
     }
 
     public Optional<Player> findById(Integer playerId) {
+        LOGGER.debug("Find player by id: {}", playerId);
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource("PLAYER_ID", playerId);
         List<Player> results = namedParameterJdbcTemplate.query(findByIdSql, sqlParameterSource, rowMapper);
         return Optional.ofNullable(DataAccessUtils.uniqueResult(results));
     }
 
     public Integer create(Player player) {
-        if (!isPlayerNameUnique(player)) {
-            throw new IllegalArgumentException("Player with the same name already exists in DB.");
-        }
+        LOGGER.debug("Create player: {}", player);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("FIRSTNAME", player.getFirstName())
@@ -80,6 +84,7 @@ public class PlayerDaoJdbc implements PlayerDao {
     }
 
     public Integer update(Player player) {
+        LOGGER.debug("Update player: {}", player);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("PLAYER_ID", player.getPlayerId())
                         .addValue("FIRSTNAME", player.getFirstName())
@@ -91,16 +96,13 @@ public class PlayerDaoJdbc implements PlayerDao {
     }
 
     public Integer delete(Integer playerId) {
+        LOGGER.debug("Delete player by id: {}", playerId);
         return namedParameterJdbcTemplate.update(deleteSql, new MapSqlParameterSource()
                 .addValue("PLAYER_ID", playerId));
     }
 
     public Integer count(){
+        LOGGER.debug("count()");
         return namedParameterJdbcTemplate.queryForObject(countSql, new HashMap<>(), Integer.class);
-    }
-
-    private boolean isPlayerNameUnique(Player player) {
-        return namedParameterJdbcTemplate.queryForObject(checkSql,
-                new MapSqlParameterSource("FIRSTNAME", player.getFirstName()), Integer.class) == 0;
     }
 }

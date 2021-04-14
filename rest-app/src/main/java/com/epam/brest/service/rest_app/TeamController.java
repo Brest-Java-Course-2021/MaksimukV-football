@@ -2,6 +2,8 @@ package com.epam.brest.service.rest_app;
 
 import com.epam.brest.model.Team;
 import com.epam.brest.service.TeamService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 public class TeamController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeamController.class);
 
     private TeamService teamService;
 
@@ -26,6 +30,7 @@ public class TeamController {
     
     @GetMapping(value = "/teams/{id}")
     public ResponseEntity<Team> findById(@PathVariable Integer id) {
+        LOGGER.debug("findById({})", id);
         Optional<Team> optional = teamService.findById(id);
         return optional.isPresent()
                 ? new ResponseEntity<>(optional.get(), HttpStatus.OK)
@@ -34,18 +39,21 @@ public class TeamController {
 
     @PostMapping(value = "/teams", consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<Integer> createTeam(@RequestBody Team team) {
+        LOGGER.debug("createTeam({})", team);
         Integer id = teamService.create(team);
         return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/teams", consumes = {"application/json"}, produces = {"application/json"})
     public ResponseEntity<Integer> updateTeam(@RequestBody Team team) {
+        LOGGER.debug("updateTeam({})", team);
         Integer id = teamService.update(team);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/teams/{id}", produces = {"application/json"})
     public ResponseEntity<Integer> deleteTeam(@PathVariable Integer id) {
+        LOGGER.debug("deleteTeam({})", id);
         Integer result = teamService.delete(id);
         return result > 0
                 ? new ResponseEntity<>(result, HttpStatus.OK)

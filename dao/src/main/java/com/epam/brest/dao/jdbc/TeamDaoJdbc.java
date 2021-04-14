@@ -3,6 +3,8 @@ package com.epam.brest.dao.jdbc;
 import com.epam.brest.dao.TeamDao;
 import com.epam.brest.model.Team;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,6 +24,8 @@ import java.util.Optional;
 
 @Repository
 public class TeamDaoJdbc implements TeamDao {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TeamDaoJdbc.class);
 
     @Value("${team.select}")
     private String selectSql;
@@ -53,17 +57,21 @@ public class TeamDaoJdbc implements TeamDao {
     }
 
     public List<Team> findAll() {
+        LOGGER.debug("Find all teams");
         return namedParameterJdbcTemplate.query(selectSql, rowMapper);
     }
 
     public Optional<Team> findById(Integer teamId) {
+        LOGGER.debug("Find team by id: {}", teamId);
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource("TEAM_ID", teamId);
         List<Team> results = namedParameterJdbcTemplate.query(findByIdSql, sqlParameterSource, rowMapper);
         return Optional.ofNullable(DataAccessUtils.uniqueResult(results));
     }
 
     public Integer create(Team team) {
+        LOGGER.debug("Create team: {}", team);
         if (!isTeamNameUnique(team)) {
+            LOGGER.warn("Team with the same name already exists in DB: {}", team);
             throw new IllegalArgumentException("Team with the same name already exists in DB.");
         }
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -75,6 +83,7 @@ public class TeamDaoJdbc implements TeamDao {
     }
 
     public Integer update(Team team) {
+        LOGGER.debug("Update team: {}", team);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("TEAM_NAME", team.getTeamName())
                         .addValue("TEAM_ID", team.getTeamId());
@@ -82,11 +91,13 @@ public class TeamDaoJdbc implements TeamDao {
     }
 
     public Integer delete(Integer teamId) {
+        LOGGER.debug("Delete team by id: {}", teamId);
         return namedParameterJdbcTemplate.update(deleteSql, new MapSqlParameterSource()
                 .addValue("TEAM_ID", teamId));
     }
 
     public Integer count(){
+        LOGGER.debug("count()");
         return namedParameterJdbcTemplate.queryForObject(countSql, new HashMap<>(), Integer.class);
     }
 
