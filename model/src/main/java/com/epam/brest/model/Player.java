@@ -14,6 +14,17 @@ public class Player {
 
     private Integer teamId;
 
+    public Player () {}
+
+    public Player(String firstName, String lastName, String nationality, Double salary, Integer teamId) {
+        this.playerId = playerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.salary = salary;
+        this.teamId = teamId;
+    }
+
     public Integer getPlayerId() {
         return playerId;
     }
