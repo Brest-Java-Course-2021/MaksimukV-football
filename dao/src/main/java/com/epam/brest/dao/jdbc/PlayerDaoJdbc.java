@@ -86,8 +86,7 @@ public class PlayerDaoJdbc implements PlayerDao {
     public Integer update(Player player) {
         LOGGER.debug("Update player: {}", player);
         SqlParameterSource sqlParameterSource =
-                new MapSqlParameterSource("PLAYER_ID", player.getPlayerId())
-                        .addValue("FIRSTNAME", player.getFirstName())
+                new MapSqlParameterSource("FIRSTNAME", player.getFirstName())
                         .addValue("LASTNAME", player.getLastName())
                         .addValue("NATIONALITY", player.getNationality())
                         .addValue("SALARY", player.getSalary())

@@ -1,5 +1,7 @@
 package com.epam.brest.model;
 
+import java.util.Objects;
+
 public class Player {
 
     private Integer playerId;
@@ -17,7 +19,6 @@ public class Player {
     public Player () {}
 
     public Player(String firstName, String lastName, String nationality, Double salary, Integer teamId) {
-        this.playerId = playerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.nationality = nationality;
@@ -82,5 +83,16 @@ public class Player {
                 ", salary=" + salary +
                 ", teamId=" + teamId +
                 '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player that = (Player) o;
+        return Objects.equals(playerId, that.playerId) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(nationality, that.nationality) && Objects.equals(salary, that.salary) && Objects.equals(teamId, that.teamId);
+    }
+
+    public int hashCode() {
+        return Objects.hash(playerId, firstName, lastName, nationality, salary, teamId);
     }
 }

@@ -43,7 +43,12 @@ public class PlayerDaoJdbcIT {
         Integer playerId = players.get(0).getPlayerId();
         Player expPlayer = playerDao.findById(playerId).get();
         Assertions.assertEquals(playerId, expPlayer.getPlayerId());
+        Assertions.assertEquals(players.get(0).getPlayerId(), expPlayer.getPlayerId());
         Assertions.assertEquals(players.get(0).getFirstName(), expPlayer.getFirstName());
+        Assertions.assertEquals(players.get(0).getLastName(), expPlayer.getLastName());
+        Assertions.assertEquals(players.get(0).getNationality(), expPlayer.getNationality());
+        Assertions.assertEquals(players.get(0).getSalary(), expPlayer.getSalary());
+        Assertions.assertEquals(players.get(0).getTeamId(), expPlayer.getTeamId());
         Assertions.assertEquals(players.get(0), expPlayer);
     }
 

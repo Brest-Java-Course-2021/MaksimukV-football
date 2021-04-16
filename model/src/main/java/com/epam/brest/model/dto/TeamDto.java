@@ -35,7 +35,7 @@ public class TeamDto {
         return prefNationality;
     }
 
-    public void setAvgSalary(final String prefNationality) {
+    public void setPrefNationality(final String prefNationality) {
         this.prefNationality = prefNationality;
     }
 
