@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/service-api/service-api.iml" filepath="$PROJECT_DIR$/service-api/service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-web/service-impl.iml" filepath="$PROJECT_DIR$/service-web/service-impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-rest/service-rest.iml" filepath="$PROJECT_DIR$/service-rest/service-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-app/web-app.iml" filepath="$PROJECT_DIR$/web-app/web-app.iml" />
     </modules>
   </component>
 </project>

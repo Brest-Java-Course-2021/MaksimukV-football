@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head><title>Home Page</title></head>
+<body>
+<table class="table table-hover table-sm">
+    <thead class="table-dark">
+    </tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="team : ${teams}">
+        <td th:text="${team.teamId}"></td>
+        <td th:text="${team.teamName}"></td>
+    </tr>
+    <tr>
+        <td>GGG</td>
+        <td>YOO</td>
+    </tr>
+    <tr>
+        <td>GGG</td>
+        <td>YOO</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

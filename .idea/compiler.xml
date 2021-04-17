@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="web-app" />
         <module name="dao" />
         <module name="service" />
         <module name="dao-api" />
@@ -28,7 +29,7 @@
       <module name="service-api" target="11" />
       <module name="service-impl" target="15" />
       <module name="service-rest" target="11" />
-      <module name="web-app" target="15" />
+      <module name="web-app" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
