@@ -30,12 +30,11 @@ public class TeamController {
         this.teamService = teamService;
     }
 
-    @GetMapping(value = "/team-dtos")
+    @GetMapping(value = "/teams")
     public final String teams(Model model) {
-        LOGGER.debug("teams()");
-        LOGGER.debug("findAllWithPrefNationality({})", teamDtoService.findAllWithPrefNationality());
+        LOGGER.debug("teams({})", model);
         model.addAttribute("teams", teamDtoService.findAllWithPrefNationality());
-        return "home";
+        return "teams";
     }
 
     @GetMapping(value = "/team/{id}")

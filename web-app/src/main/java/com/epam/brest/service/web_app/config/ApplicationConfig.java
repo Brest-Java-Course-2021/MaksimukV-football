@@ -8,13 +8,11 @@ import com.epam.brest.service.rest.TeamDtoServiceRest;
 import com.epam.brest.service.rest.TeamServiceRest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan
 public class ApplicationConfig {
 
     @Value("${rest.server.protocol}")

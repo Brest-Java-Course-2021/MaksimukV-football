@@ -1,0 +1,3 @@
+com/epam/brest/dao/jdbc/PlayerDaoJdbcITest.class
+com/epam/brest/dao/jdbc/TeamDaoJdbcITest.class
+com/epam/brest/dao/jdbc/TeamDtoDaoJdbcITest.class
