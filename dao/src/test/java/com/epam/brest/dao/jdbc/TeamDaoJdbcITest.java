@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @PropertySource({"classpath:dao.properties"})
 @ContextConfiguration(classes = SpringJdbcConfig.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class TeamDaoJdbcIT {
+public class TeamDaoJdbcITest {
 
     @Autowired
     private TeamDao teamDao;

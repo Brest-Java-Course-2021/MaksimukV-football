@@ -2,7 +2,7 @@ package com.epam.brest.model;
 
 import org.junit.jupiter.api.*;
 
-public class PlayerUT {
+public class PlayerUTest {
 
     @Test
     public void getPlayerSetters() {

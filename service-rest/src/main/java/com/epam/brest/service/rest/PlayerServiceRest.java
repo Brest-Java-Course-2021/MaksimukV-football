@@ -1,6 +1,7 @@
 package com.epam.brest.service.rest;
 
 import com.epam.brest.model.Player;
+import com.epam.brest.service.PlayerService;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PlayerServiceRest {
+public class PlayerServiceRest implements PlayerService {
 
     private String url;
 

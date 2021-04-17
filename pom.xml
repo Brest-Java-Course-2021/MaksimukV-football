@@ -21,13 +21,14 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 
         <h2.version>1.4.200</h2.version>
         <junit.version>5.7.1</junit.version>
         <springbom.version>5.3.5</springbom.version>
         <springboot.version>2.4.4</springboot.version>
+        <mockito.version>3.8.0</mockito.version>
         <hamcrest.version>1.3</hamcrest.version>
         <slf4j.version>1.7.30</slf4j.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
@@ -103,24 +104,27 @@
                 <version>1.4.200</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <runOrder>alphabetical</runOrder>
-                    <reportsDirectory>${junit.utReportFolder}</reportsDirectory>
-                    <excludes>
-                        <exclude>**/*IT*</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

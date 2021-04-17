@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @PropertySource({"classpath:dao.properties"})
 @ContextConfiguration(classes = SpringJdbcConfig.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class PlayerDaoJdbcIT {
+public class PlayerDaoJdbcITest {
 
     @Autowired
     private PlayerDao playerDao;

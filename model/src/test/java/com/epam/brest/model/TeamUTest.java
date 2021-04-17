@@ -2,7 +2,7 @@ package com.epam.brest.model;
 
 import org.junit.jupiter.api.*;
 
-public class TeamUT {
+public class TeamUTest {
 
     @Test
     public void getTeamNameConstructor() {
