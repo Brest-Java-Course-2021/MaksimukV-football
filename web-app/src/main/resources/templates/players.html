@@ -26,11 +26,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="teams.html"
+                        <a class="nav-link active" href="teams.html"
                            th:href="@{/teams}">Teams</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="players.html"
+                        <a class="nav-link" href="players.html"
                            th:href="@{/players}">Players</a>
                     </li>
                 </ul>
@@ -47,7 +47,7 @@
                        th:href="@{/player}"
                        class="btn btn-light"
                        title="Add player">
-                        <i class="bi-plus"></i> <span class="d-none d-sm-inline">Add player</span>
+                        <i class="bi-plus"></i>&nbsp;<span class="d-none d-sm-inline">Add player</span>
                     </a>
                 </li>
             </ul>
@@ -80,6 +80,19 @@
                             <td th:text="${player.nationality}"></td>
                             <td th:text="${player.salary}"></td>
                             <td th:text="${player.teamId}"></td>
+                            <td class="text-end">
+                                <a href="player.html"
+                                   th:href="@{|/player/${player.playerId}|}"
+                                   class="btn-sm btn-outline-secondary" title="Edit player">
+                                    <span class="d-none d-md-inline">Edit</span>
+                                </a>
+                                <span data-bs-toggle="modal" data-bs-target="#deleteDialog"
+                                      th:attr="data-id=${player.playerId},data-name=${player.firstName}">
+                                    <a href="#" class="btn-sm btn-outline-secondary" title="delete player">
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </a>
+                                </span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -107,7 +120,6 @@
                 Please confirm deletion
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <a id="deleteUrl" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
@@ -121,7 +133,7 @@
 <script>
     $('#deleteDialog').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Please confirm deletion player: "' + target.data('name') + '"')
+        $(this).find('.modal-body').text('Please confirm player deletion: "' + target.data('name') + '"')
         document.getElementById('deleteUrl').href = '/player/' + target.data('id') + '/delete';
     })
 </script>

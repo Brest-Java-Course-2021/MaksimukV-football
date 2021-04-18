@@ -65,7 +65,6 @@
                         <tr>
                             <th>Team No</th>
                             <th>Team name</th>
-<!--                            <th>Preferred Nationality</th>-->
                             <th></th>
                         </tr>
                         </thead>
@@ -73,7 +72,6 @@
                         <tr th:each="team : ${teams}">
                             <td th:text="${team.teamId}"></td>
                             <td th:text="${team.teamName}"></td>
-<!--                            <td th:text="${team.prefNationality}"></td>-->
                             <td class="text-end">
                                 <a href="team.html"
                                    th:href="@{|/team/${team.teamId}|}"
@@ -114,7 +112,6 @@
                 Please confirm deletion
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <a id="deleteUrl" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
@@ -128,7 +125,8 @@
 <script>
     $('#deleteDialog').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Please confirm team deletion: "' + target.data('name') + '"')
+        $(this).find('.modal-body').text('Please confirm team deletion: "' + target.data('name') + '"' +
+        ".  Team wont be deleted if it has dependent players.")
         document.getElementById('deleteUrl').href = '/team/' + target.data('id') + '/delete';
     })
 </script>

@@ -1,6 +1,7 @@
 package com.epam.brest.service.web_app;
 
 import com.epam.brest.model.Team;
+import com.epam.brest.model.dto.TeamDto;
 import com.epam.brest.service.TeamDtoService;
 import com.epam.brest.service.TeamService;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -75,7 +77,20 @@ public class TeamController {
     @GetMapping(value = "/team/{id}/delete")
     public final String deleteTeamById(@PathVariable Integer id, Model model) {
         LOGGER.debug("delete({},{})", id, model);
+        if(checkDeletionAbility(id))
         this.teamService.delete(id);
         return "redirect:/teams";
+    }
+
+    boolean checkDeletionAbility(Integer Id){
+        boolean ifDeletable = true;
+        List<TeamDto> teamDtos = teamDtoService.findAllWithPrefNationality();
+        for (TeamDto teamDto : teamDtos) {
+            if (teamDto.getTeamId().equals(Id)) {
+                ifDeletable = false;
+                break;
+            }
+        }
+        return ifDeletable;
     }
 }
