@@ -41,7 +41,7 @@ public class TeamDto {
 
     public String toString() {
         return "TeamDto{"
-                + "departentId=" + teamId
+                + "teamId=" + teamId
                 + ", teamName='" + teamName + '\''
                 + ", prefNationality=" + prefNationality
                 + '}';
