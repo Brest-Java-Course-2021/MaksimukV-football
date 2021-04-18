@@ -20,8 +20,8 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/img/logo.svg}"
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/football.svg"
+                                                  th:src="@{/img/football.svg}"
                                                   height="32" width="32" alt="HR"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -65,7 +65,7 @@
                         <tr>
                             <th>Team No</th>
                             <th>Team name</th>
-                            <th>Preferred Nationality</th>
+<!--                            <th>Preferred Nationality</th>-->
                             <th></th>
                         </tr>
                         </thead>
@@ -73,7 +73,20 @@
                         <tr th:each="team : ${teams}">
                             <td th:text="${team.teamId}"></td>
                             <td th:text="${team.teamName}"></td>
-                            <td th:text="${team.prefNationality}"></td>
+<!--                            <td th:text="${team.prefNationality}"></td>-->
+                            <td class="text-end">
+                                <a href="team.html"
+                                   th:href="@{|/team/${team.teamId}|}"
+                                   class="btn-sm btn-outline-secondary" title="Edit team">
+                                    <span class="d-none d-md-inline">&nbsp;Edit</span>
+                                </a>
+                                <span data-bs-toggle="modal" data-bs-target="#deleteDialog"
+                                      th:attr="data-id=${team.teamId},data-name=${team.teamName}">
+                                    <a href="#" class="btn-sm btn-outline-secondary" title="delete team">
+                                        <span class="d-none d-md-inline">&nbsp;Delete</span>
+                                    </a>
+                                </span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -98,7 +111,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Please confirm delete
+                Please confirm deletion
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -115,7 +128,7 @@
 <script>
     $('#deleteDialog').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Please confirm delete team: "' + target.data('name') + '"')
+        $(this).find('.modal-body').text('Please confirm team deletion: "' + target.data('name') + '"')
         document.getElementById('deleteUrl').href = '/team/' + target.data('id') + '/delete';
     })
 </script>

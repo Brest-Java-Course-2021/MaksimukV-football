@@ -20,14 +20,14 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/img/logo.svg}"
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/football.svg"
+                                                  th:src="@{/img/football.svg}"
                                                   height="32" width="32" alt="HR"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="departments.html"
-                           th:href="@{/departments}">Departments</a>
+                        <a class="nav-link" href="teams.html"
+                           th:href="@{/teams}">Teams</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="players.html"
@@ -48,7 +48,8 @@
                    class="btn btn-light btn-block"><i class="bi-arrow-left"></i></a>
             </li>
         </ul>
-        <span class="navbar-brand text-uppercase me-auto">Edit player</span>
+        <span class="navbar-brand text-uppercase me-auto"
+              th:text="${isNew} ? 'New player' : 'Edit player'">Edit player</span>
     </nav>
 </header>
 
@@ -61,14 +62,10 @@
                         <form>
                             <div class="mb-3">
                                 <label class="form-label"
-                                       for="field_department">Department</label>
+                                       for="field_department">Team</label>
                                 <select class="form-control"
                                         id="field_department">
-                                    <option value="0">CEO</option>
-                                    <option value="1">Accounting</option>
-                                    <option value="2">Java</option>
-                                    <option value="3">Testing</option>
-                                    <option value="4">People management</option>
+                                    <option th:each="team : ${teams}" th:value="${team.teamId}" th:text="${team.teamName}"></option>
                                 </select>
                             </div>
                             <div class="mb-3">

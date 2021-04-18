@@ -20,8 +20,8 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/img/logo.svg}"
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/football.svg"
+                                                  th:src="@{/img/football.svg}"
                                                   height="32" width="32" alt="HR"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -104,7 +104,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Please confirm delete
+                Please confirm deletion
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -121,7 +121,7 @@
 <script>
     $('#deleteDialog').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Please confirm delete player: "' + target.data('name') + '"')
+        $(this).find('.modal-body').text('Please confirm deletion player: "' + target.data('name') + '"')
         document.getElementById('deleteUrl').href = '/player/' + target.data('id') + '/delete';
     })
 </script>

@@ -33,7 +33,7 @@ public class TeamController {
     @GetMapping(value = "/teams")
     public final String teams(Model model) {
         LOGGER.debug("teams({})", model);
-        model.addAttribute("teams", teamDtoService.findAllWithPrefNationality());
+        model.addAttribute("teams", this.teamService.findAll());
         return "teams";
     }
 
@@ -75,7 +75,7 @@ public class TeamController {
     @GetMapping(value = "/team/{id}/delete")
     public final String deleteTeamById(@PathVariable Integer id, Model model) {
         LOGGER.debug("delete({},{})", id, model);
-        teamService.delete(id);
+        this.teamService.delete(id);
         return "redirect:/teams";
     }
 }

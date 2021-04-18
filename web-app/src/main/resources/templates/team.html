@@ -20,8 +20,8 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/img/logo.svg}"
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/football.svg"
+                                                  th:src="@{/img/football.svg}"
                                                   height="32" width="32" alt="HR"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -30,8 +30,8 @@
                            th:href="@{/teams}">Teams</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="employees.html"
-                           th:href="@{/employees}">Employees</a>
+                        <a class="nav-link" href="players.html"
+                           th:href="@{/players}">Players</a>
                     </li>
                 </ul>
             </div>
@@ -75,13 +75,6 @@
                                        id="field_teamName"
                                        type="text" value="CEO"
                                        th:field="*{teamName}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label"
-                                       for="field_description">Description</label>
-                                <input class="form-control"
-                                       id="field_description"
-                                       type="text" value="CEO team">
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="teams.html"

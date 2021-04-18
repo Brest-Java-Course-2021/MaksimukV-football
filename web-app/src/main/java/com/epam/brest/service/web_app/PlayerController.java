@@ -2,6 +2,7 @@ package com.epam.brest.service.web_app;
 
 import com.epam.brest.model.Player;
 import com.epam.brest.service.PlayerService;
+import com.epam.brest.service.TeamDtoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class PlayerController {
     
     private final PlayerService playerService;
 
+    private final TeamDtoService teamDtoService;
+
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, TeamDtoService teamDtoService) {
         this.playerService = playerService;
+        this.teamDtoService = teamDtoService;
     }
     
     @GetMapping(value = "/players")
@@ -51,6 +55,7 @@ public class PlayerController {
         LOGGER.debug("gotoAddPlayerPage({})", model);
         model.addAttribute("isNew", true);
         model.addAttribute("player", new Player());
+        model.addAttribute("teams", teamDtoService.findAllWithPrefNationality());
         return "player";
     }
 
