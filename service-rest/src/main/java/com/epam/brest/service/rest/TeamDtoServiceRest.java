@@ -1,8 +1,11 @@
 package com.epam.brest.service.rest;
 
+import com.epam.brest.model.Team;
 import com.epam.brest.model.dto.TeamDto;
 import com.epam.brest.service.TeamDtoService;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +26,8 @@ public class TeamDtoServiceRest implements TeamDtoService {
     }
 
     public List<TeamDto> findAllWithPrefNationality() {
-        return restTemplate.exchange(url, GET, null, new ParameterizedTypeReference<List<TeamDto>>() {}).getBody();
+        ResponseEntity responseEntity = restTemplate
+                .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<TeamDto>>(){});
+        return (List<TeamDto>) responseEntity.getBody();
     }
 }

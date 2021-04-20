@@ -216,14 +216,6 @@ class TeamControllerITest {
         mockServer.verify();
     }
 
-    private TeamDto createTeamDto(int id, String name, String prefNationality) {
-        TeamDto teamDto = new TeamDto();
-        teamDto.setTeamId(id);
-        teamDto.setTeamName(name);
-        teamDto.setPrefNationality(prefNationality);
-        return teamDto;
-    }
-
     private Team createTeam(int id, String name) {
         Team team = new Team();
         team.setTeamId(id);

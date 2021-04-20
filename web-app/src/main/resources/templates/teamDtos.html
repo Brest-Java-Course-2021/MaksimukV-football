@@ -10,7 +10,7 @@
           th:href="@{/css/style.css}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Teams</title>
+    <title>Ethnic analysis</title>
 </head>
 <body>
 
@@ -44,22 +44,12 @@
     <nav id="main-header"
          class="py-1 mb-3 navbar navbar-light bg-light text-dark">
         <div class="container-fluid">
-            <span class="navbar-brand text-uppercase">Teams</span>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="team.html"
-                       th:href="@{/team}"
-                       class="btn btn-light"
-                       title="Add team">
-                        <i class="bi-plus"></i>&nbsp;<span class="d-none d-sm-inline">Add team</span>
-                    </a>
-                </li>
-            </ul>
+            <span class="navbar-brand text-uppercase">Ethnic analysis</span>
         </div>
     </nav>
 </header>
 
-<section id="teams">
+<section id="teamDtos">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -68,27 +58,16 @@
                         <thead class="table-dark">
                         <tr>
                             <th>Team No</th>
-                            <th>Team name</th>
+                            <th>Team Name</th>
+                            <th>Most frequent nationality</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="team : ${teams}">
-                            <td th:text="${team.teamId}"></td>
-                            <td th:text="${team.teamName}"></td>
-                            <td class="text-end">
-                                <a href="team.html"
-                                   th:href="@{|/team/${team.teamId}|}"
-                                   class="btn-sm btn-outline-secondary" title="Edit team">
-                                    <span class="d-none d-md-inline">&nbsp;Edit</span>
-                                </a>
-                                <span data-bs-toggle="modal" data-bs-target="#deleteDialog"
-                                      th:attr="data-id=${team.teamId},data-name=${team.teamName}">
-                                    <a href="#" class="btn-sm btn-outline-secondary" title="delete team">
-                                        <span class="d-none d-md-inline">&nbsp;Delete</span>
-                                    </a>
-                                </span>
-                            </td>
+                        <tr th:each="teamDto : ${teamDtos}">
+                            <td th:text="${teamDto.teamId}"></td>
+                            <td th:text="${teamDto.teamName}"></td>
+                            <td th:text="${teamDto.prefNationality}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -103,36 +82,9 @@
     <p class="text-center">&copy; 2021</p>
 </footer>
 
-<!-- Confirm delete Modal -->
-<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header alert-danger">
-                <h5 class="modal-title" id="exampleModalLabel">Delete team</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Please confirm deletion
-            </div>
-            <div class="modal-footer">
-                <a id="deleteUrl" href="#" class="btn btn-danger">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="../../resources/static/js/bootstrap.bundle.min.js"
         th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script src="../../resources/static/js/jquery-3.4.1.slim.min.js"
         th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
-<script>
-    $('#deleteDialog').on('show.bs.modal', function (event) {
-        var target = $(event.relatedTarget)
-        $(this).find('.modal-body').text('Please confirm team deletion: "' + target.data('name') + '"' +
-        ".  Team wont be deleted if it has dependent players.")
-        document.getElementById('deleteUrl').href = '/team/' + target.data('id') + '/delete';
-    })
-</script>
 </body>
 </html>
