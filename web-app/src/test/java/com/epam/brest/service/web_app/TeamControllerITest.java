@@ -24,12 +24,8 @@ import org.springframework.web.context.WebApplicationContext;
 import java.net.URI;
 import java.util.Arrays;
 
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isA;
-import static org.hamcrest.Matchers.isEmptyOrNullString;
+
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -56,6 +52,9 @@ class TeamControllerITest {
 
     private MockRestServiceServer mockServer;
 
+    @Autowired
+    protected ObjectMapper objectMapper;
+
     private ObjectMapper mapper = new ObjectMapper();
 
     @BeforeEach
@@ -66,14 +65,14 @@ class TeamControllerITest {
 
     @Test
     public void shouldReturnTeamsPage() throws Exception {
-        TeamDto d1 = createTeamDto(1, "YOO", "American");
-        TeamDto d2 = createTeamDto(2, "GOO", "African");
-        TeamDto d3 = createTeamDto(3, "FOO", null);
-        mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAM_DTOS_URL)))
+        Team t1 = createTeam(1, "YOO");
+        Team t2 = createTeam(2, "GOO");
+        Team t3 = createTeam(3, "FOO");
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAMS_URL)))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(mapper.writeValueAsString(Arrays.asList(d1, d2, d3)))
+                        .body(mapper.writeValueAsString(Arrays.asList(t1, t2, t3)))
                 );
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/teams")
@@ -83,23 +82,20 @@ class TeamControllerITest {
                 .andExpect(view().name("teams"))
                 .andExpect(model().attribute("teams", hasItem(
                         allOf(
-                                hasProperty("teamId", is(d1.getTeamId())),
-                                hasProperty("teamName", is(d1.getTeamName())),
-                                hasProperty("prefNationality", is(d1.getPrefNationality()))
+                                hasProperty("teamId", is(t1.getTeamId())),
+                                hasProperty("teamName", is(t1.getTeamName()))
                         )
                 )))
                 .andExpect(model().attribute("teams", hasItem(
                         allOf(
-                                hasProperty("teamId", is(d2.getTeamId())),
-                                hasProperty("teamName", is(d2.getTeamName())),
-                                hasProperty("prefNationality", is(d2.getPrefNationality()))
+                                hasProperty("teamId", is(t2.getTeamId())),
+                                hasProperty("teamName", is(t2.getTeamName()))
                         )
                 )))
                 .andExpect(model().attribute("teams", hasItem(
                         allOf(
-                                hasProperty("teamId", is(d3.getTeamId())),
-                                hasProperty("teamName", is(d3.getTeamName())),
-                                hasProperty("prefNationality", isEmptyOrNullString())
+                                hasProperty("teamId", is(t3.getTeamId())),
+                                hasProperty("teamName", is(t3.getTeamName()))
                         )
                 )))
         ;
@@ -201,6 +197,11 @@ class TeamControllerITest {
     @Test
     public void shouldDeleteTeam() throws Exception {
         int id = 3;
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAM_DTOS_URL)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                );
         mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAMS_URL + "/" + id)))
                 .andExpect(method(HttpMethod.DELETE))
                 .andRespond(withStatus(HttpStatus.OK)
@@ -212,7 +213,6 @@ class TeamControllerITest {
         ).andExpect(status().isFound())
                 .andExpect(view().name("redirect:/teams"))
                 .andExpect(redirectedUrl("/teams"));
-
         mockServer.verify();
     }
 

@@ -2,6 +2,7 @@ package com.epam.brest.service.rest;
 
 import com.epam.brest.model.Team;
 import com.epam.brest.service.TeamService;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +24,8 @@ public class TeamServiceRest implements TeamService {
     }
 
     public List<Team> findAll() {
-        ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);
+        ResponseEntity responseEntity = restTemplate
+                .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Team>>(){});
         return (List<Team>) responseEntity.getBody();
     }
 

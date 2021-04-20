@@ -1,7 +1,0 @@
-com/epam/brest/service/rest_app/TeamDtoController.class
-com/epam/brest/service/rest_app/ApplicationRest.class
-com/epam/brest/service/rest_app/exception/CustomExceptionHandler.class
-com/epam/brest/service/rest_app/exception/TeamNotFoundException.class
-com/epam/brest/service/rest_app/exception/ErrorResponse.class
-com/epam/brest/service/rest_app/TeamController.class
-com/epam/brest/service/rest_app/PlayerController.class

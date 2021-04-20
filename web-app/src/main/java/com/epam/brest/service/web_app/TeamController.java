@@ -85,6 +85,7 @@ public class TeamController {
     boolean checkDeletionAbility(Integer Id){
         boolean ifDeletable = true;
         List<TeamDto> teamDtos = teamDtoService.findAllWithPrefNationality();
+        if(teamDtos != null)
         for (TeamDto teamDto : teamDtos) {
             if (teamDto.getTeamId().equals(Id)) {
                 ifDeletable = false;

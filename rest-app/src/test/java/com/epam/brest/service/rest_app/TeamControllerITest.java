@@ -96,7 +96,7 @@ class TeamControllerITest {
     public void shouldCreateTeam() throws Exception {
         Integer countBefore = teamService.count();
 
-        teamService.create(new Team("HR"));
+        teamService.create(new Team("TEAM"));
 
         // verify database size
         Integer countAfter = teamService.count();
@@ -105,9 +105,9 @@ class TeamControllerITest {
 
     @Test
     public void createTeamWithSameNameTest() throws Exception {
-        teamService.create(new Team("HR"));
+        teamService.create(new Team("TEAM"));
 
-        String json = objectMapper.writeValueAsString(new Team("HR"));
+        String json = objectMapper.writeValueAsString(new Team("TEAM"));
         MockHttpServletResponse response =
                 mockMvc.perform(post(TEAMS_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -120,9 +120,9 @@ class TeamControllerITest {
 
     @Test
     public void createTeamWithSameNameDiffCaseTest() throws Exception {
-        teamService.create(new Team("HR"));
+        teamService.create(new Team("TEAM"));
 
-        String json = objectMapper.writeValueAsString(new Team("Hr"));
+        String json = objectMapper.writeValueAsString(new Team("Team"));
         MockHttpServletResponse response =
                 mockMvc.perform(post(TEAMS_ENDPOINT)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -149,7 +149,7 @@ class TeamControllerITest {
 
     @Test
     public void shouldDeleteTeam() throws Exception {
-        Integer id = teamService.create(new Team("HR"));
+        Integer id = teamService.create(new Team("TEAM"));
         Integer countBefore = teamService.count();
 
         teamService.delete(id);

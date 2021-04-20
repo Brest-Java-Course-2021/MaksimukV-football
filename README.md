@@ -11,7 +11,7 @@ This is a simple CRUD Java app example.
 mvn clean install
 ```
 ## Run application
-Application consist 2 particular modules (web-app & rest-app) that are dependent on each other.
+Application consists 2 particular modules (web-app & rest-app) that are dependent on each other.
 ### Start Rest application
 To start Rest server (rest-app module):
 ```

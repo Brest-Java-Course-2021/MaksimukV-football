@@ -38,6 +38,7 @@ class PlayerControllerITest {
     private static final Integer PLAYER_NAME_SIZE = 50;
     
     private static final String PLAYERS_URL = "http://localhost:8088/players";
+    private static final String TEAMS_URL = "http://localhost:8088/teams";
 
     @Autowired
     private WebApplicationContext wac;
@@ -73,33 +74,37 @@ class PlayerControllerITest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("text/html;charset=UTF-8"))
                 .andExpect(view().name("players"))
-                .andExpect(model().attribute("players", nullValue()))
-//                .andExpect(model().attribute("players", hasItem(
-//                        allOf(
-//                                hasProperty("playerId", is(p1.getPlayerId()))
-//                                hasProperty("firstName", is(p1.getFirstName())),
-//                                hasProperty("lastName", is(p1.getLastName())),
-//                                hasProperty("nationality", is(p1.getNationality())),
-//                                hasProperty("salary", is(p1.getSalary())),
-//                                hasProperty("teamId", is(p1.getTeamId()))
-//                        )
-//                )))
-//                .andExpect(model().attribute("players", hasItem(
-//                        allOf(
-//                                hasProperty("playerId", is(p2.getPlayerId())),
-//                                hasProperty("firstName", is(p2.getFirstName())),
-//                                hasProperty("lastName", is(p2.getLastName())),
-//                                hasProperty("nationality", is(p2.getNationality())),
-//                                hasProperty("salary", is(p2.getSalary())),
-//                                hasProperty("teamId", is(p2.getTeamId()))
-//                        )
-//                )))
+                .andExpect(model().attribute("players", hasItem(
+                        allOf(
+                                hasProperty("playerId", is(p1.getPlayerId())),
+                                hasProperty("firstName", is(p1.getFirstName())),
+                                hasProperty("lastName", is(p1.getLastName())),
+                                hasProperty("nationality", is(p1.getNationality())),
+                                hasProperty("salary", is(p1.getSalary())),
+                                hasProperty("teamId", is(p1.getTeamId()))
+                        )
+                )))
+                .andExpect(model().attribute("players", hasItem(
+                        allOf(
+                                hasProperty("playerId", is(p2.getPlayerId())),
+                                hasProperty("firstName", is(p2.getFirstName())),
+                                hasProperty("lastName", is(p2.getLastName())),
+                                hasProperty("nationality", is(p2.getNationality())),
+                                hasProperty("salary", is(p2.getSalary())),
+                                hasProperty("teamId", is(p2.getTeamId()))
+                        )
+                )))
         ;
         mockServer.verify();
     }
 
     @Test
     public void shouldOpenNewPlayerPage() throws Exception {
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAMS_URL)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                );
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/player")
         ).andDo(MockMvcResultHandlers.print())
@@ -141,6 +146,11 @@ class PlayerControllerITest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(mapper.writeValueAsString(d))
                 );
+        mockServer.expect(ExpectedCount.once(), requestTo(new URI(TEAMS_URL)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                );
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/player/1")
         ).andDo(MockMvcResultHandlers.print())
@@ -149,7 +159,7 @@ class PlayerControllerITest {
                 .andExpect(view().name("player"))
                 .andExpect(model().attribute("isNew", is(false)))
                 .andExpect(model().attribute("player", hasProperty("playerId", is(d.getPlayerId()))))
-                .andExpect(model().attribute("player", hasProperty("firstName", is(d.getFirstName()))));
+                .andExpect(model().attribute("teams", isEmptyOrNullString()));
         mockServer.verify();
     }
 
