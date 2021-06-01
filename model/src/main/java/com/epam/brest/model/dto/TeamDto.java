@@ -1,11 +1,16 @@
 package com.epam.brest.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class TeamDto {
 
+    @ApiModelProperty(notes = "Team identifier(number)")
     private Integer teamId;
 
+    @ApiModelProperty(notes = "Team name")
     private String teamName;
 
+    @ApiModelProperty(notes = "The most popular players nationality in current team")
     private String prefNationality;
     
     public TeamDto() {

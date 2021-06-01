@@ -19,6 +19,8 @@ public class SpringFoxConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
-                .tags(new Tag("Player controllers", "Player list operations"), new Tag("Team controllers", "Team list operations"));
+                .tags(new Tag("Player controllers", "Player list operations"),
+                        new Tag("Team controllers", "Team list operations"),
+                        new Tag("Player nationality controller", "Players nationality operations"));
     }
 }
