@@ -29,6 +29,12 @@ To trigger Rest Shutdown Hook:
 ```
 ^C
 ```
+## Rest API
+There is an API provided for the rest-app in the project. To access it, go to the
+```
+http://localhost:8088/swagger-ui.html
+```
+Note: Rest app should be built and ran for api page to work.
 ## Model schema
 
 This is how DB tables can be visualized.
