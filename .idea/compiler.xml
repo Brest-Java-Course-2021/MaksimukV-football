@@ -9,8 +9,8 @@
         <module name="web-app" />
         <module name="dao" />
         <module name="service" />
-        <module name="dao-api" />
         <module name="service-impl" />
+        <module name="dao-api" />
         <module name="service-rest" />
         <module name="rest-app" />
         <module name="model" />
@@ -23,7 +23,7 @@
       <module name="dao-api" target="11" />
       <module name="db" target="11" />
       <module name="MaksimukV-football" target="11" />
-      <module name="model" target="11" />
+      <module name="model" target="7" />
       <module name="rest-app" target="11" />
       <module name="service" target="11" />
       <module name="service-api" target="11" />

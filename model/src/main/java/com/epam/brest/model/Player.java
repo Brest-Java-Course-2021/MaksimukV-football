@@ -1,19 +1,27 @@
 package com.epam.brest.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
 
 public class Player {
 
+    @ApiModelProperty(notes = "Player identifier(number)")
     private Integer playerId;
 
+    @ApiModelProperty(notes = "Players name")
     private String firstName;
 
+    @ApiModelProperty(notes = "Players surname")
     private String lastName;
 
+    @ApiModelProperty(notes = "Players nationality")
     private String nationality;
 
+    @ApiModelProperty(notes = "Players salary")
     private Double salary;
 
+    @ApiModelProperty(notes = "Players team identifier(number)")
     private Integer teamId;
 
     public Player () {}

@@ -1,11 +1,15 @@
 package com.epam.brest.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
 
 public class Team {
 
+    @ApiModelProperty(notes = "Team identifier(number)")
     private Integer teamId;
 
+    @ApiModelProperty(notes = "Teams name")
     private String teamName;
 
     public Team() {}
