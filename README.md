@@ -44,4 +44,8 @@ This is how DB tables can be visualized.
 ## Start up initialization
 There are already some entities existing in DB.\
 There are 2 teams and 4 players.
-
+## Project presentation
+There is a brief presentation for project available in its structure.
+```
+documentation/about/Maksimukv-football-shortened.pptx
+```

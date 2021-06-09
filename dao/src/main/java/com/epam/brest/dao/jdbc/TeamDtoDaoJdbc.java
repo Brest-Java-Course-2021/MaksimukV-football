@@ -26,6 +26,10 @@ public class TeamDtoDaoJdbc implements TeamDtoDao {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+//    public TeamDtoDaoJdbc(NamedParameterJdbcTemplate template) {
+//        this.namedParameterJdbcTemplate = template;
+//    }
+
     public List<TeamDto> findAllWithPrefNationality() {
         LOGGER.debug("findAllWithPrefNationality()");
         List<TeamDto> teams = namedParameterJdbcTemplate.query(findAllWithPrefNationalitySql,

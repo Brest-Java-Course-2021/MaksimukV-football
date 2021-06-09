@@ -56,6 +56,10 @@ public class PlayerDaoJdbc implements PlayerDao {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+//    public PlayerDaoJdbc(NamedParameterJdbcTemplate template) {
+//        this.namedParameterJdbcTemplate = template;
+//    }
+
     public List<Player> findAll() {
         LOGGER.debug("Find all players");
         return namedParameterJdbcTemplate.query(selectSql, rowMapper);

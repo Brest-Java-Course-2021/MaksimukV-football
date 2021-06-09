@@ -24,7 +24,7 @@ public class PlayerServiceRest implements PlayerService {
     }
 
     public List<Player> findAll() {
-        ResponseEntity responseEntity = restTemplate
+        ResponseEntity<List<Player>> responseEntity = restTemplate
                 .exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Player>>(){});
         return (List<Player>) responseEntity.getBody();
     }
@@ -36,7 +36,7 @@ public class PlayerServiceRest implements PlayerService {
     }
 
     public Integer create(Player player) {
-        ResponseEntity responseEntity = restTemplate.postForEntity(url, player, Integer.class);
+        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(url, player, Integer.class);
         return (Integer) responseEntity.getBody();
     }
 

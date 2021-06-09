@@ -1,0 +1,232 @@
+Used technologies
+
+Tools
+
+IntelliJ IDEA
+Java 15
+Apache Maven
+Apache Tomcat
+
+Language
+
+JUnit 4/5
+Mockito
+Spring Boot
+Thymeleaf
+Bootstrap CSS
+HTML
+Markdown
+SQL  (H2)
+Swagger
+SLF4J
+
+JUnit
+
+1. What is the main feature of Junit?
+JUnit is an open source framework, used in more than 30% Java projects.
+2. What are cons in using JUnit instead of manual testing?
+Fast, Less investment in human resources, More reliable, Programmable.
+3. What is JUnit and what its main goal?
+JUnit is a unit testing framework for the Java. The goal is to create an up-to-date foundation for developer-side testing on the JVM. This includes focusing on Java 8 and above, as well as enabling many different styles of testing.
+4. Where are JUnit artifact deployed?
+JUnit artifacts are deployed to Maven Central and can be downloaded using the special links. All files are signed using the keys listed in the KEYS file.
+5. How JUnit is represented in project and how is it used?
+A Junit test fixture is a Java object. Test methods must be annotated by the @Test annotation.
+6. What annotations are used to define some additional actions?
+It is possible to define a method to execute before (or after) each (or all) of the test methods with the @BeforeEach (or @AfterEach) and @BeforeAll (or @AfterAll) annotations.
+7. What is a JUnit test case?
+A JUnit test case is a part of Java code, which ensures that another part of code (method) works as expected.
+8. How is JUnit implemented into project?
+As a dependency into pom.xml (maven).
+9. How is JUnit imported?
+org.junit.Jupiter for JUnit5, org.junit for JUnit4, junit.framework for JUnit3.
+10. What is the latest JUnit platform and what it contains?
+JUnit 5 is composed of several different modules from three different sub-projects.
+JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
+
+Mockito
+
+1. What is Mockito and what is it used for?
+Mockito is a mocking framework, JAVA-based library that is used for effective unit testing of JAVA applications. Mockito is used to mock interfaces so that a dummy functionality can be added to a mock interface that can be used in unit testing.
+2. What is mocking in general?
+Mocking is primarily used in unit testing. In short, mocking is creating objects that simulate the behavior of real objects.
+3. What are the benefits of Mockito?
+No Handwriting, Refactoring Safe, Return value support, Exception support, Order check support, Annotation support.
+4. What income data/dependencies are required for mocking?
+Mocking does not require a database connection or properties file read or file server read to test a functionality. Mock objects do the mocking of the real service. A mock object returns a dummy data corresponding to some dummy input passed to it.
+5. Where are Mockito dependencies situated?
+Mockito downloads and instructions for setting up Maven, Gradle and other build systems are available from the Central Repository and Bintray.
+6. How to implement Mockito to project?
+To use Mockito in a Maven project you must add it as dependency to your pom file. In class, you need to use the org.mockito.Mockito.* import.
+7. How can someone create mock object?
+Using the static mock() method, using the @Mock annotation, using the @ExtendWith extension for JUnit5.
+8. What happens if Mockito unconfigured/configured wrongly?
+Unspecified method calls return "empty" values: null for objects, 0 for numbers, false for Boolean, empty collections for collections, etc.
+9. What if a particular output data type required in mock method?
+Use methods anyString or anyInt to define that dependent on the input type a certain value should be returned. If you specify more than one value, they are returned in the order of specification, until the last one is used. Afterwards the last specified value is returned.
+10. How to verify the calls on the mock objects?
+Mockito keeps track of all the method calls and their parameters to the mock object. You can use the verify() method on the mock object to verify that the specified conditions are met.
+
+Spring Boot
+
+1. What is Spring Boot?
+Spring Boot is a Spring module which provides RAD (Rapid Application Development) feature to Spring framework.
+It is used to create stand alone spring-based application that you can just run because it needs very little spring configuration.
+2. What is the main advantage of Spring Boot in coding?
+It automatically configure Spring whenever possible.
+3. What is the main advantage of Spring Boot in deploying?
+Embed Tomcat, Jetty or Undertow directly. You don't need to deploy WAR files.
+4. What is Spring Boot Initializer?
+It is a web tool which is provided by Spring on official site. You can create Spring Boot project by providing project details.
+5. What are the Spring Boot Annotations?
+The @RestController is a stereotype annotation. It adds @Controller and @ResponseBody annotations to the class. We need to import org.springframework.web.bind.annotation package in our file, in order to implement it.
+6. What is Spring Boot dependency management?
+Spring Boot manages dependencies and configuration automatically. You don't need to specify version for any of that dependencies. Spring Boot upgrades all dependencies automatically when you upgrade Spring Boot.
+7. What are the Spring Boot properties?
+Spring Boot provides various properties which can be specified inside our project's application.properties file. These properties have default values, and you can set that inside the properties file. Properties are used to set values like: server-port number, database connection configuration etc.
+8. How to connect Spring Boot to the database using JPA?
+Spring Boot provides spring-boot-starter-data-jpa starter to connect Spring application with relational database efficiently. You can use it into project POM (Project Object Model) file.
+9. How to connect Spring Boot application to database using JDBC?
+Spring Boot also provides starter and libraries for connecting to our application with JDBC.
+10. What is @RequestMapping annotation in Spring Boot?
+The @RequestMapping annotation is used to provide routing information. It tells the Spring that any HTTP request should map to the corresponding method. We need to import org.springframework.web.annotation package in our file.
+
+Thymeleaf
+
+1. What is Spring Boot?
+Spring Boot is a Spring module which provides RAD (Rapid Application Development) feature to Spring framework.
+It is used to create stand alone spring-based application that you can just run because it needs very little spring configuration.
+2. What is the main advantage of Spring Boot in coding?
+It automatically configure Spring whenever possible.
+3. What is the main advantage of Spring Boot in deploying?
+Embed Tomcat, Jetty or Undertow directly. You don't need to deploy WAR files.
+4. What is Spring Boot Initializer?
+It is a web tool which is provided by Spring on official site. You can create Spring Boot project by providing project details.
+5. What are the Spring Boot Annotations?
+The @RestController is a stereotype annotation. It adds @Controller and @ResponseBody annotations to the class. We need to import org.springframework.web.bind.annotation package in our file, in order to implement it.
+6. What is Spring Boot dependency management?
+Spring Boot manages dependencies and configuration automatically. You don't need to specify version for any of that dependencies. Spring Boot upgrades all dependencies automatically when you upgrade Spring Boot.
+7. What are the Spring Boot properties?
+Spring Boot provides various properties which can be specified inside our project's application.properties file. These properties have default values, and you can set that inside the properties file. Properties are used to set values like: server-port number, database connection configuration etc.
+8. How to connect Spring Boot to the database using JPA?
+Spring Boot provides spring-boot-starter-data-jpa starter to connect Spring application with relational database efficiently. You can use it into project POM (Project Object Model) file.
+9. How to connect Spring Boot application to database using JDBC?
+Spring Boot also provides starter and libraries for connecting to our application with JDBC.
+10. What is @RequestMapping annotation in Spring Boot?
+The @RequestMapping annotation is used to provide routing information. It tells the Spring that any HTTP request should map to the corresponding method. We need to import org.springframework.web.annotation package in our file.
+
+Bootstrap CSS
+
+1. What is Bootstrap?
+Bootstrap is a platform for web development based on a front-end framework. It is used to create exceptional responsive designs using HTML, and CSS. Bootstrap has JS plugins, which are optional. Bootstrap is mostly preferred for developing mobile web applications.
+2. What are Bootstrap features?
+Bootstrap provides extensive browser support for almost every known browser such as Opera, Chrome, Firefox, Safari, etc.  Also, it supports mobile applications with the help of responsive design and can adjust CSS as per the device, screen size, etc. Instead of creating multiple files, it creates only a single file reducing the work of a developer.
+3. What are the key components of Bootstrap?
+The key components of Bootstrap include CSS, Scaffolding, Layout Components, JavaScript Plugins, Customize.
+4. What are Class loaders in Bootstrap?
+A class loader is a part of JRE or Java Runtime Environment which loads Java classes into Java virtual environment. Class loaders also perform the process of converting a named class into its equivalent binary form.
+5. What is Contextual classes of table in Bootstrap?
+The classes are .active, .success, .warning, .danger.
+6. How many types of layout are available in Bootstrap?
+There are two major layouts for Bootstrap: Fluid Layout- the layout that is necessary for creating an app that is 100 % wider and covers all the screen width and Fixed Layout that is used only for a standard screen (940px). Both layouts can be used for creating a responsive design.
+7. What is Bootstrap Grid System?
+Bootstrap includes a responsive, mobile-first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes predefined classes for easy layout options, as well as powerful mixins for generating more semantic layouts.
+8. Why do we use Jumbotron in Bootstrap?
+Jumbotron is used for highlighting content in bootstrap. It could either be a slogan or probably a headline. It increases the heading size and gives a margin for the content of the landing page.
+9. Explain the typography and links in Bootstrap.
+Bootstrap sets typography and link styles. Typography uses the @font-family-base, @font-size-base, and @line-height-base attributes as the typographic base and link styles sets the global link color via attribute @link-color and applies link underlines only on :hover.
+10. How do you make images responsive?
+Bootstrap allows to make the images responsive by adding a class .img-responsive to the <img> tag.
+
+HTML
+
+1. What is HTML?
+HTML stands for Hyper Text Markup Language. It is a language of World Wide Web. It is a standard text formatting language which is used to create and display pages on the Web.2. What are Bootstrap features?
+2. What are HTML tags?
+When a web browser reads an HTML document, the browser reads it from top to bottom and left to right. HTML tags are used to create HTML documents and render their properties. Each HTML tags have different properties.
+3. Do all HTML tags have an end tag?
+No. There are some HTML tags that don't need a closing tag. For example: <image> tag, <br> tag.
+4. What is formatting in HTML?
+The HTML formatting is a process of format the text for a better look and feel. It uses different tags to make text bold, italicized, underlined.
+5. What is the difference between HTML elements and tags?
+HTML elements communicate to the browser to render text. When the elements are enclosed by brackets <>, they form HTML tags. Most of the time, tags come in a pair and surround content.
+6. What is semantic HTML?
+Semantic HTML is a coding style. It is the use of HTML markup to reinforce the semantics or meaning of the content. For example: In semantic HTML <b> </b> tag is not used for bold statement as well as <i> </i> tag is used for italic. Instead of these we use <strong></strong> and <em></em> tags.
+7. What is an image map?
+Image map facilitates you to link many different web pages using a single image. It is represented by <map> tag. You can define shapes in images that you want to make part of an image mapping.
+8. How to insert a copyright symbol on a browser page?
+You can insert a copyright symbol by using &copy; or &#169; in an HTML file.
+9. Why is a URL encoded in HTML?
+An URL is encoded to convert non-ASCII characters into a format that can be used over the Internet because a URL is sent over the Internet by using the ASCII character-set only. If a URL contains characters outside the ASCII set, the URL has to be converted. The non-ASCII characters are replaced with a "%" followed by hexadecimal digits.
+10. Is there any need to change the web browsers to support HTML5?
+No. Almost all browsers (updated versions) support HTML 5. For example Chrome, Firefox, Opera, Safari, IE.
+
+Markdown
+
+1. What is Markdown?
+Markdown is a lightweight markup language. The extension for a Markdown file is .md or .markdown.
+2. How are Markdown docs processed?
+To compile a markdown file, you need an application capable of processing markdown files like Microsoft Word, Dillinger, etc. These applications use a Markdown processor or parser which converts a markdown file to printable HTML code. 
+3. What is Markdown primarily used for?
+It is heavily used to write formatted pages across various WEB platforms like StackOverflow, Github and many more.
+4. What formats can Markdown file be converted to?
+Convertable to formats like PDF, HTML, docs etc.
+5. How to define a header in markdown?
+You should use “# Header1”.
+6. What can be used as Markdown manual?
+Full markdown documentation is open-source and can be found throught the web, for example sourceforge.net
+7. Does markdown apply for WEB only?
+HTML is wide-spread powerfool tool that can be used in many cases, for example, as decoration to text message in messengers.
+8. What are line break best practices?
+You can use two or more spaces (commonly referred to as “trailing whitespace”) for line breaks in nearly every Markdown application, but it’s controversial. It’s hard to see trailing whitespace in an editor, and many people accidentally or intentionally put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. Fortunately, there is another option supported by nearly every Markdown application: the <br> HTML tag.
+
+SQL (H2)
+
+1. What is SQL?
+Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.
+2. What is H2?
+H2 is an open-source lightweight Java database. It can be embedded in Java applications or run in the client-server mode.
+3. How To Connect To H2 Database During Development/testing Using Spring-boot?
+Spring-boot offers a convenient way to hook up the H2 database. All we need to do is offer the dependency in pom.xml.
+4. What is the name of the default H2 database configured by Spring Boot?
+H2 database is an in-memory database configured by SpringBoot. The default name of the H2 database that is configured by spring boot is testdb.
+5. What file is used to configure H2 in Spring Boot application?
+By default, application.properties is used. There, for example, we can set H2 dialect.
+6. What is RDBMS?
+RDBMS stands for Relational Database Management System. RDBMS store the data into the collection of tables, which is related by common fields between the columns of the table. It also provides relational operators to manipulate the data stored into the tables.
+7. What is a primary key?
+A primary key is a combination of fields which uniquely specify a row. This is a special kind of unique key, and it has implicit NOT NULL constraint. It means, Primary key values cannot be NULL.
+8. What is a foreign key?
+A foreign key is one table which can be related to the primary key of another table. Relationship needs to be created between two tables by referencing foreign key with the primary key of another table.
+9. What is a join?
+This is a keyword used to query data from more tables based on the relationship between the fields of the tables. Keys play a major role when JOINs are used.
+10. What is a Cursor?
+A database Cursor is a control which enables traversal over the rows or records in the table. This can be viewed as a pointer to one row in a set of rows. Cursor is very much useful for traversing such as retrieval, addition and removal of database records.
+
+Swagger
+
+1. What Is Swagger?
+Swagger allows you to describe the structure of your APIs so that machines and people can read them.
+2. What is the difference between PUT and POST?
+"PUT" puts a file or resource at a particular URI and exactly at that URI. If there is already a file or resource at that URI, PUT changes that file or resource. If there is no resource or file there, PUT makes one. POST sends data to a particular URI and expects the resource at that URI to deal with the request. The web server at this point can decide what to do with the data in the context of specified resource.
+3. What are benefits of swagger?
+It givse list of APIs with short description, its testable, it provides UI.
+4. How can be Swagger implemented into Spring Boot application?
+First of all, it should be imported throught pom.xml. Then, it should be configured with a class marked as @EnableSwagger2
+5. What are Swagger annotations used for instances?
+Actually, Swagger has some instance description configuration by default. But we can change it using @ApiModelProperty
+6. What is Swagger Docket?
+Docket is special Swagger configurational object, used to define some API dependencies. It must be implemented into Spring Boot project as a @Bean.
+7. Where can be result of Swagger UI can be seen?
+Swagger UI is always deployed on *server host/swagger-ui.html*
+8. Explain what is REST and RESTful?
+Representational state transfer is a software architectural style which uses a subset of HTTP. It is commonly used to create interactive applications that use Web services. A Web service that follows these guidelines is called RESTful.
+9. What are most popular HTTP requests handled by Swagger?
+Swagger usually used to describe how GET, POST, PUT, and DELETE are realized.
+10. What is Swaggers main goal?
+Its goal is to standardize the vocabulary used by APIs. It is the API dictionary.
+
+
+
+
+

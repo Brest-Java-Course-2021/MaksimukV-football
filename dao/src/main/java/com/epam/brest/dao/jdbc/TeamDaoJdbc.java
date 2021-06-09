@@ -56,6 +56,10 @@ public class TeamDaoJdbc implements TeamDao {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
+//    public TeamDaoJdbc(NamedParameterJdbcTemplate template) {
+//        this.namedParameterJdbcTemplate = template;
+//    }
+
     public List<Team> findAll() {
         LOGGER.debug("Find all teams");
         return namedParameterJdbcTemplate.query(selectSql, rowMapper);

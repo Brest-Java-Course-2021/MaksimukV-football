@@ -24,6 +24,8 @@
       <module name="db" target="11" />
       <module name="MaksimukV-football" target="11" />
       <module name="model" target="7" />
+      <module name="postgress" target="1.8" />
+      <module name="postgress-boot" target="11" />
       <module name="rest-app" target="11" />
       <module name="service" target="11" />
       <module name="service-api" target="11" />
@@ -31,5 +33,20 @@
       <module name="service-rest" target="11" />
       <module name="web-app" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dao" options="" />
+      <module name="dao-api" options="" />
+      <module name="db" options="" />
+      <module name="model" options="" />
+      <module name="postgress" options="-parameters" />
+      <module name="postgress-boot" options="-parameters" />
+      <module name="rest-app" options="" />
+      <module name="service" options="" />
+      <module name="service-api" options="" />
+      <module name="service-rest" options="" />
+      <module name="web-app" options="" />
+    </option>
   </component>
 </project>
