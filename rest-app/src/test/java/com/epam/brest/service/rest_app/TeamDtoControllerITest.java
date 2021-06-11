@@ -60,15 +60,15 @@ class TeamDtoControllerITest {
     }
 
     @Test
-    void findAllWithAvgSalary() throws Exception {
-        List<TeamDto> dtos = teamDtoService.findAllWithAvgSalary();
+    void findAllWithPrefNationality() throws Exception {
+        List<TeamDto> dtos = teamDtoService.findAllWithPrefNationality();
         assertNotNull(dtos);
         assertTrue(dtos.size() > 0);
     }
 
     private class MockTeamDtoService {
 
-        public List<TeamDto> findAllWithAvgSalary() throws Exception {
+        public List<TeamDto> findAllWithPrefNationality() throws Exception {
             MockHttpServletResponse response = mockMvc.perform(get(TEAM_DTOS_ENDPOINT)
                     .accept(MediaType.APPLICATION_JSON)
             ).andExpect(status().isOk())

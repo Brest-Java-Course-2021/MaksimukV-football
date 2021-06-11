@@ -1,0 +1,45 @@
+Slide 1
+
+I will tell you about my Spring Boot project. The main idea of project was to split it in 2 particular independent
+applications, one providing business-logics and DB operations, second providing UI.
+
+Slide 2 (Used technologies)
+
+Those are technologies used in project. I used IDEA with Java 15, Tomcat (Spring Boot embedded) and maven.
+Project was built on Spring Boot. For front-end HTML, CSS with Thymeleaf and Bootstrap,
+for back-end Spring MVC and Spring Jdbc were used. SLF4J tool was used for logging.
+If to talk about DB, embedded one were used (H2, SQL relational database). Swagger provided the api for rest operations
+and JUnit and Mockito were used for testing.
+
+Slide 3 (Project structure and architecture)
+
+There are shown project architecture, so the first module is providing client-friendly UI and second is providing
+data. Both apps are completely independent and are called web-app and rest-app. They both have classes marked as with
+@SpringBootApplication annotation where the main method is situated. They are also deployed on different ports,
+8080 for web-app and 8088 for rest-app.
+
+Slide 4 (Database structure)
+
+The database structure is very easy. There are just 2 tables with one foreign key and one-to-many relationship.
+
+Slide 5 (WEB-app)
+
+If to talk about web-app, there is shown that every needed operation and every CRUD operation can be performed throught UI.
+Every action has its button. If action requires incoming data, app provides a submit form for it with all needed fields.
+
+Slide 6 (Rest-app and its API)
+
+In case of rest-app its has only rest controllers so there are only data output deployed. To connect 2 applications
+there are some API provided using swagger. It can be visualized through swagger UI. That also makes rest-app module
+friendly for further usages with other applications, not web-app only. Also we can research for how good is module working
+and if it returns required data.
+
+Slide 7 (DAO and database)
+
+As it was already said, H2 embedded were used as a database. Its configuration file is situated in project structure.
+Database is operated with Spring Jdbc. It performs all of the create, read, update and delete operations to
+the Player and Team tables and also have a query to find the most popular player nationality in each team.
+Database is recreated everytime project restarted.
+
+
+
